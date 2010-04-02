@@ -1,0 +1,3 @@
+;; -*- mode: emacs-lisp -*-
+;; History entries used for anything adaptive display.
+(setq anything-c-adaptive-history (quote ((command ("git-status" ("git-status" . 1))) ("Manual Pages" ("git-status" ("git-st" . 1))))))
