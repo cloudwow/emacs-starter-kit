@@ -1,0 +1,5 @@
+#name : def init  ... end
+#group : definitions
+# --
+def initialize($0)
+end

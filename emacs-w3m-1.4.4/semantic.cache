@@ -1,0 +1,15 @@
+;; Object emacs-w3m-1.4.4/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "emacs-w3m-1.4.4/"
+  :tables (list 
+   (semanticdb-table "w3m-load.el"
+    :major-mode 'emacs-lisp-mode
+    :tags '(("w3m-load" package nil nil [143 162]) ("w3m-retrieve" function (:prototype-flag t) nil [387 1499]) ("w3m-download" function (:prototype-flag t :user-visible-flag t) nil [1501 1610]) ("w3m-goto-url" function (:prototype-flag t :user-visible-flag t) nil [1612 2924]) ("w3m-goto-url-new-session" function (:prototype-flag t :user-visible-flag t) nil [2926 3247]) ("w3m-gohome" function (:prototype-flag t :user-visible-flag t) nil [3249 3322]) ("w3m" function (:prototype-flag t :user-visible-flag t) nil [3324 5087]) ("w3m-browse-url" function (:prototype-flag t :user-visible-flag t) nil [5089 5429]) ("w3m-find-file" function (:prototype-flag t :user-visible-flag t) nil [5431 5617]) ("w3m-region" function (:prototype-flag t :user-visible-flag t) nil [5619 6012]) ("w3m-about-antenna" function (:prototype-flag t) nil [6172 6315]) ("w3m-antenna" function (:prototype-flag t :user-visible-flag t) nil [6317 6469]) ("w3m-bookmark-add-this-url" function (:prototype-flag t :user-visible-flag t) nil [6737 6848]) ("w3m-bookmark-add-current-url" function (:prototype-flag t :user-visible-flag t) nil [6850 7038]) ("w3m-bookmark-add-current-url-group" function (:prototype-flag t :user-visible-flag t) nil [7040 7180]) ("w3m-bookmark-view" function (:prototype-flag t :user-visible-flag t) nil [7182 7282]) ("w3m-about-bookmark" function (:prototype-flag t) nil [7284 7381]) ("w3m-cookie-shutdown" function (:prototype-flag t :user-visible-flag t) nil [7594 7676]) ("w3m-cookie-set" function (:prototype-flag t) nil [7678 7869]) ("w3m-cookie-get" function (:prototype-flag t) nil [7871 7996]) ("w3m-cookie" function (:prototype-flag t :user-visible-flag t) nil [7998 8123]) ("w3m-about-cookie" function (:prototype-flag t) nil [8125 8317]) ("w3m-about-dtree" function (:prototype-flag t) nil [8467 8590]) ("w3m-dtree" function (:prototype-flag t :user-visible-flag t) nil [8592 8776]) ("w3m-filter" function (:prototype-flag t) nil [8914 9041]) ("w3m-fontify-forms" function (:prototype-flag t) nil [9180 9305]) ("w3m-link-numbering-mode" function (:prototype-flag t :user-visible-flag t) nil [9450 9586]) ("w3m-about-namazu" function (:prototype-flag t) nil [9741 9867]) ("w3m-namazu" function (:prototype-flag t :user-visible-flag t) nil [9869 9991]) ("w3m-about-perldoc" function (:prototype-flag t) nil [10151 10279]) ("w3m-perldoc" function (:prototype-flag t :user-visible-flag t) nil [10281 10371]) ("w3m-search" function (:prototype-flag t :user-visible-flag t) nil [10532 10912]) ("w3m-search-uri-replace" function (:prototype-flag t) nil [10914 11064]) ("w3m-replace-symbol" function (:prototype-flag t) nil [11210 11294]) ("w3m-weather" function (:prototype-flag t :user-visible-flag t) nil [11453 11543]) ("w3m-about-weather" function (:prototype-flag t) nil [11545 11678]))
+    :file "w3m-load.el"
+    :pointmax 11817
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre4"
+  :semanticdb-version "2.0pre4"
+  )
