@@ -1,11 +1,11 @@
 ;;; multi-term.el --- Managing multiple terminal buffers in Emacs.
 
 ;; Author: Andy Stewart <lazycat.manatee@gmail.com>
-;; Maintainer: FENG Jiabin <benplusplus@gmail.com>
+;; Maintainer: Andy Stewart <lazycat.manatee@gmail.com>
 ;; Copyright (C) 2008, 2009, Andy Stewart, all rights reserved.
 ;; Created: 2008-09-19 23:02:42
-;; Version: 0.8.8
-;; Last-Updated: 2009-07-04 06:27:31
+;; Version: 0.8.5
+;; Last-Updated: 2009-03-29 12:53:29
 ;; URL: http://www.emacswiki.org/emacs/download/multi-term.el
 ;; Keywords: term, terminal, multiple buffer
 ;; Compatibility: GNU Emacs 23.0.60.1
@@ -125,17 +125,6 @@
 ;;
 
 ;;; Change log:
-;;
-;; 2009/07/04
-;;      * Add new option `multi-term-dedicated-select-after-open-p'.
-;;
-;; 2009/06/29
-;;      * Fix regexp bug.
-;;
-;; 2009/04/21
-;;      * Fix a bug that bring at `2009/03/28':
-;;        It will kill sub-process in other multi-term buffer
-;;        when we kill current multi-term buffer.
 ;;
 ;; 2009/03/29
 ;;      * Add new command `term-send-reverse-search-history'.
@@ -345,14 +334,6 @@ Default is nil."
            (multi-term-dedicated-handle-other-window-advice value)))
   :group 'multi-term)
 
-(defcustom multi-term-dedicated-select-after-open-p nil
-  "Default, multi-term won't focus terminal window after you open dedicated window.
-Please make this option with t if you want focus terminal window.
-
-Default is nil."
-  :type 'boolean
-  :group 'multi-term)
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;; Constant ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (defconst multi-term-dedicated-buffer-name "MULTI-TERM-DEDICATED"
   "The buffer name of dedicated `multi-term'.")
@@ -411,13 +392,7 @@ Will prompt you shell name when you type `C-u' before this command."
           (multi-term-internal))
         (set-window-buffer multi-term-dedicated-window (get-buffer (multi-term-dedicated-get-buffer-name)))
         (set-window-dedicated-p multi-term-dedicated-window t)
-        ;; Select window.
-        (select-window
-         (if multi-term-dedicated-select-after-open-p
-             ;; Focus dedicated terminal window if option `multi-term-dedicated-select-after-open-p' is enable.
-             multi-term-dedicated-window
-           ;; Otherwise focus current window.
-           current-window)))
+        (select-window current-window))
     (message "`multi-term' dedicated window has exist.")))
 
 (defun multi-term-dedicated-close ()
@@ -546,18 +521,17 @@ If option DEDICATED-WINDOW is `non-nil' will create dedicated `multi-term' windo
 (defun multi-term-kill-buffer-hook ()
   "Function that hook `kill-buffer-hook'."
   (when (eq major-mode 'term-mode)
-    ;; Quit the current subjob
-    ;; when have alive process with current term buffer.
-    ;; Must do this job BEFORE `multi-term-switch-after-close' action.
-    (when (term-check-proc (current-buffer))
-      ;; Quit sub-process.
-      (term-quit-subjob))
     ;; Remember dedicated window height.
     (multi-term-dedicated-remember-window-height)
     ;; Try to switch other multi-term buffer
     ;; when option `multi-term-switch-after-close' is non-nil.
     (when multi-term-switch-after-close
-      (multi-term-switch-internal multi-term-switch-after-close 1))))
+      (multi-term-switch-internal multi-term-switch-after-close 1))
+    ;; Quit the current subjob
+    ;; when have alive process with current term buffer
+    (when (term-check-proc (current-buffer))
+      ;; Quit sub-process.
+      (term-quit-subjob))))
 
 (defun multi-term-list ()
   "List term buffers presently active."
@@ -565,9 +539,8 @@ If option DEDICATED-WINDOW is `non-nil' will create dedicated `multi-term' windo
   (autoload 'remove-if-not "cl-seq")
   (sort
    (remove-if-not (lambda (b)
-                    (setq case-fold-search t)
                     (string-match
-                     (format "^\\\*%s<[0-9]+>\\\*$" multi-term-buffer-name)
+                     (concat "^\*" multi-term-buffer-name)
                      (buffer-name b)))
                   (buffer-list))
    (lambda (a b)

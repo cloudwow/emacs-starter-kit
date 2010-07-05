@@ -1,3 +1,3 @@
 ;; -*- mode: emacs-lisp -*-
 ;; History entries used for anything adaptive display.
-(setq anything-c-adaptive-history (quote ((command ("git-status" ("git-status" . 1))) ("Manual Pages" ("git-status" ("git-st" . 1))))))
+(setq anything-c-adaptive-history (quote ((buffer ("ecb-a" ("ecb-a" . 1))) (command ("toggle-save-place-globally" ("save" . 1)) ("eruby-nxhtml-mumamo-mode" ("mumamo" . 1)) ("w3m-browse-url" ("w3m" . 1)) ("w3m" ("w3m" . 1)) ("ecb-other-window" ("other-window" . 1)) ("byte-recompile-directory" ("compile" . 2)) ("rdebug-step" ("rdebug-step" . 1)) ("ecb-show-ecb-windows" ("ecb-sh" . 1)) ("ede-speedbar" ("speedbar" . 1)) ("ecb-goto-window-history" ("ecb-goto" . 1) ("history" . 1))))))
